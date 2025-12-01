@@ -6,6 +6,7 @@
     ../profiles/desktop.nix
     ../profiles/gaming.nix
     ../profiles/office.nix
+    ../profiles/hyprland.nix
   ];
 
   targets.genericLinux.enable = true;
