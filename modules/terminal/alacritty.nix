@@ -35,5 +35,9 @@ in
       enable = true;
       package = config.lib.nixGL.wrap pkgs.alacritty;
     };
+
+    home.file = {
+      ".config/alacritty/alacritty.toml".source = ../../files/.config/alacritty/alacritty.toml;
+    };
   };
 }
