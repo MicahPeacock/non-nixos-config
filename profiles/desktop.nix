@@ -12,7 +12,6 @@
     desktop.fonts.enable    = lib.mkDefault true;
 
     programs.shell.default  = lib.mkDefault "bash";
-    programs.wezterm.enable = lib.mkDefault true;
   };
 
   services.flatpak.packages = lib.mkIf config.local.services.flatpak.enable [
