@@ -17,12 +17,10 @@
   };
 
   local = {
-    services.flatpak.enable = true;
-
     programs.shell.default = "fish";
-    programs.wezterm = {
+    programs.alacritty = {
       enable = true;
-      theme = "One Dark (Gogh)";
+      theme = "dracula";
       font = {
         name = "CaskaydiaCove Nerd Font Mono";
         size = 10;
