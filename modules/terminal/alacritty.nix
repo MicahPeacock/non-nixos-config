@@ -34,10 +34,41 @@ in
     programs.alacritty = {
       enable = true;
       package = config.lib.nixGL.wrap pkgs.alacritty;
+
+      theme = "${cfg.theme}";
+      
+      settings = {
+        general.import = [
+          "options.toml"
+        ];
+        window = {
+          dimensions = {
+            columns = 120;
+            lines = 40;
+          };
+        };
+        cursor = {
+          style = {
+            shape = "Beam";
+            blinking = "On";
+          };
+          thickness = 0.15;
+        };
+      };
     };
 
     home.file = {
-      ".config/alacritty/alacritty.toml".source = ../../files/.config/alacritty/alacritty.toml;
+      ".config/alacritty/options.toml".text = ''
+        [terminal]
+        shell = "${config.home.homeDirectory}/.nix-profile/bin/${config.local.programs.shell.default}"
+
+        [window]
+        opacity = ${builtins.toString cfg.opacity}
+
+        [font]
+        normal = { family = "${cfg.font.name}" }
+        size = ${builtins.toString cfg.font.size}
+      '';
     };
   };
 }
