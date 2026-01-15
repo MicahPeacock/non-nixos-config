@@ -4,7 +4,6 @@
   imports = [
     ../profiles/base.nix
     ../profiles/desktop.nix
-    ../profiles/development.nix
     ../profiles/gaming.nix
     ../profiles/office.nix
   ];
@@ -20,7 +19,8 @@
     programs.shell.default = "fish";
     programs.alacritty = {
       enable = true;
-      theme = "dracula";
+      theme = "one_dark";
+      opacity = 0.9;
       font = {
         name = "CaskaydiaCove Nerd Font Mono";
         size = 10;

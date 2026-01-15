@@ -35,40 +35,47 @@ in
       enable = true;
       package = config.lib.nixGL.wrap pkgs.alacritty;
 
-      theme = "${cfg.theme}";
-      
+      theme = cfg.theme;
       settings = {
-        general.import = [
-          "options.toml"
-        ];
-        window = {
-          dimensions = {
-            columns = 120;
-            lines = 40;
-          };
-        };
-        cursor = {
-          style = {
-            shape = "Beam";
-            blinking = "On";
-          };
-          thickness = 0.15;
+        settings = {
+          general.import = [
+            "general.toml"
+            "keybindings.toml"
+            "options.toml"
+          ];
         };
       };
-    };
 
-    home.file = {
-      ".config/alacritty/options.toml".text = ''
-        [terminal]
-        shell = "${config.home.homeDirectory}/.nix-profile/bin/${config.local.programs.shell.default}"
+      home.file = {
+        ".config/alacritty/general.toml".source     = ../../files/.config/alacritty/general.toml;
+        ".config/alacritty/keybindings.toml".source = ../../files/.config/alacritty/keybindings.toml;
+        ".config/alacritty/options.toml".text = ''
+          [terminal]
+          shell = "${config.home.homeDirectory}/.nix-profile/bin/${config.local.programs.shell.default}"
 
-        [window]
-        opacity = ${builtins.toString cfg.opacity}
+          [window]
+          opacity = ${builtins.toString cfg.opacity}
 
-        [font]
-        normal = { family = "${cfg.font.name}" }
-        size = ${builtins.toString cfg.font.size}
-      '';
+          [font]
+          size = ${builtins.toString cfg.font.size}
+
+          [font.normal]
+          family = "${cfg.font.name}"
+          style = "Normal"
+
+          [font.bold]
+          family = "${cfg.font.name}"
+          style = "Bold"
+
+          [font.italic]
+          family = "${cfg.font.name}"
+          style = "Italic"
+
+          [font.bold_italic]
+          family = "${cfg.font.name}"
+          style = "Bold Italic"
+        '';
+      };
     };
   };
 }
