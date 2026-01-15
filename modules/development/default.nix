@@ -2,6 +2,6 @@
 
 {
   imports = [
-    ./jetbrains-toolbox.nix
+
   ];
 }

@@ -16,7 +16,6 @@
   };
 
   local = {
-    # Terminal Shell
     programs.shell.default = "fish";
     programs.wezterm = {
       enable = true;
@@ -26,9 +25,6 @@
         size = 10;
       };
     };
-
-    # Jetbrains Toolbox
-    programs.jetbrains-toolbox.enable = true;
   };
 
   home.username = "micahpeacock";
